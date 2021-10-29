@@ -53,8 +53,9 @@
               class="beasstt-table-data-cell_{{ key }}"
               (click)="toggleDetailsRow(element)"
             >
-              <mat-icon *ngIf="element[key].value">expand_more</mat-icon>
-              <mat-icon *ngIf="!element[key].value">expand_less</mat-icon>
+              <!-- <mat-icon *ngIf="element[key].value">expand_more</mat-icon>
+              <mat-icon *ngIf="!element[key].value">expand_less</mat-icon> -->
+              <pre>{{ element | json }}</pre>
             </button>
           </td>
         </ng-container>
