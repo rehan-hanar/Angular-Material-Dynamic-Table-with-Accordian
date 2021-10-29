@@ -15,6 +15,7 @@ export interface tablevalue {
 }
 
 export interface user {
+  more: boolean;
   position: number;
   name: tablevalue;
   age: tablevalue;
@@ -38,7 +39,7 @@ export interface user {
 })
 export class AppComponent {
   dataSource;
-  displayedColumns = ['name', 'age', 'edu'];
+  displayedColumns = ['more', 'name', 'age', 'edu'];
 
   public currentExpandedRow: any;
   public expandRow: boolean = false;
@@ -68,18 +69,21 @@ export class AppComponent {
 
 const userdata: user[] = [
   {
+    more: false,
     position: 1,
     name: { value: 'Rehan' },
     age: { value: '28' },
     edu: { value: 'Maths' },
   },
   {
+    more: false,
     position: 2,
     name: { value: 'Swami' },
     age: { value: '30' },
     edu: { value: 'Sciencee' },
   },
   {
+    more: false,
     position: 3,
     name: { value: 'Sunil' },
     age: { value: '26' },
