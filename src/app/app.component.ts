@@ -47,8 +47,18 @@ export class AppComponent {
   explansionDetialRowCollection = new Array<any>();
 
   constructor() {
-    // this.dataSource = this.userdata;
-    this.dataSource = new ExampleDataSource();
+    this.dataSource = this.processData(userdata);
+    // this.dataSource = new ExampleDataSource();
+  }
+
+  processData(userdata) {
+    const rows = [];
+
+    userdata.forEach((element) =>
+      rows.push(element, { detailRow: true, element })
+    );
+
+    return of(rows);
   }
 
   public toggleDetailsRow(row: user): void {
@@ -57,7 +67,7 @@ export class AppComponent {
       this.explansionDetialRowCollection.push(row);
     } else {
       // let index = this.explansionDetialRowCollection.findIndex(idRow => idRow.name === row.element.name);
-      let test = this.explansionDetialRowCollection[0].name;
+      // let test = this.explansionDetialRowCollection[0].name;
       this.explansionDetialRowCollection.forEach((item, index) => {
         if (item.position === row.position)
           this.explansionDetialRowCollection.splice(index, 1);
@@ -91,15 +101,11 @@ const userdata: user[] = [
   },
 ];
 
-export class ExampleDataSource extends DataSource<any> {
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<Element[]> {
-    const rows = [];
-    userdata.forEach((element) =>
-      rows.push(element, { detailRow: true, element })
-    );
-    return of(rows);
-  }
+// export class ExampleDataSource extends DataSource<any> {
+//   /** Connect function called by the table to retrieve one stream containing the data to render. */
+//   connect(): Observable<Element[]> {
 
-  disconnect() {}
-}
+//   }
+
+//   disconnect() {}
+// }

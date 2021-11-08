@@ -53,9 +53,9 @@
               class="beasstt-table-data-cell_{{ key }}"
               (click)="toggleDetailsRow(element)"
             >
-              <mat-icon *ngIf="element[key].value">expand_more</mat-icon>
-              <mat-icon *ngIf="!element[key].value">expand_less</mat-icon>
-              <!-- <pre>{{ element | json }}</pre> -->
+              <p *ngIf="explansionDetialRowCollection.includes(element)">expand_more</p>
+              <p *ngIf="!explansionDetialRowCollection.includes(element)">expand_less</p>
+              <!-- <pre>{{ explansionDetialRowCollection.includes(element) | json }}</pre> -->
             </button>
           </td>
         </ng-container>
@@ -70,10 +70,7 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row
-      *matRowDef="let row; columns: displayedColumns"
-      [class.expanded]="expandRow"
-    ></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     <mat-row
       *matRowDef="
         let row;
